@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {{PAGE_TITLE}} </title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: whitesmoke;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-attachment: fixed; 
+    }
+    .pics {
+      display: flex;
+      justify-content: center;
+    }
+    .pic-frame {
+      padding: 15px;
+      margin: 10px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(2px);
+      border: 1px solid #777;
+    }
+    img {
+      height: 300px;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 80px;
+      color: white;
+      text-shadow: #555 0 0 3px;
+      font-family: 'Futura';
+    }
+    audio {
+      margin: 3px;
+    }
+    audio:focus {
+      outline: none;
+    }
+    .navbutt {
+       border: 0;
+       padding: 10px;
+       font-size: 1.5rem;
+       text-align: center;
+       color: #373737;
+       font-family: 'Roboto', sans-serif;
+       background-color: #E6E6E6;
+       text-transform: uppercase;
+       text-decoration: none;
+
+    }
+    .navbutt:hover {
+       background-color: #CCCCCC;
+    }
+  </style>
+</head>
+<body>
+  <a class="navbutt" href="{{LINK_1}}"> ← </a>
+  <main>
+    <div class="pics">
+      <div class="pic-frame"><img src="{{PIC_SRC_1}}" alt="{{WORD_EN}}"></div>
+      <div class="pic-frame"><img src="{{PIC_SRC_2}}" alt="{{WORD_EN}}"></div>
+    </div>
+    <div class="info">
+      <span>{{WORD_DE}}</span>
+      <audio controls src="{{PRONUNCIATION_1}}"></audio>
+      <audio controls src="{{PRONUNCIATION_2}}"></audio>
+    </div>
+  </main>
+  <a class="navbutt" href="{{LINK_2}}"> → </a>
+</body>
+</html>

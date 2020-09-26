@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PAGE_TITLE}}</title>
+  <style>
+    body {
+      background-color: whitesmoke;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    .lessons {
+      list-style: none;
+      display: block;
+      flex-direction: column;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .lessons > li {
+      background-color: black;
+      color: white;
+      margin: 10px;
+      display: inline-flex;
+      flex-direction: column;
+      width: 600px;
+      text-align: left;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .controls {
+      background-color: rgba(255,255,255,0.5);
+      backdrop-filter: blur(5px);
+      color: #222;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .start {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid whitesmoke;
+      color: white;
+      outline: none;
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 1.5em;
+      text-decoration: none;
+      padding: 10px;
+      width: 200px;
+      font-family: 'Futura';
+    }
+    .start:hover {
+      background: rgba(0, 0, 0, 0.6);
+      font-size: 1.6em;
+    }
+    .wordlist {
+      padding: 20px;
+      font-size: 20px;
+      font-family: 'Futura';
+    }
+    .wordlist > ul {
+      display: grid;
+      list-style: none;
+      grid-template-columns: auto auto auto;
+    }
+    h1 {
+      font-family: 'Impact', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .wordlist {
+      color: white;
+      text-shadow: #555 0 0 3px;
+    }
+    {{#LESSONS}}
+    #{{TOPIC_ID}} {
+      background-color: rgb(38, 53, 38);
+      background-image: url('{{TOPIC_BG}}');
+    }
+    {{/LESSONS}}
+    
+  </style>
+</head>
+<body>
+  <ol class="lessons"> 
+    {{#LESSONS}}
+    <li id="{{TOPIC_ID}}">
+      <div class="controls">
+        <h1>{{TOPIC_NUM}}. {{NAME}}</h1>
+        <a class="start" href="{{LINK}}">Start Lesson</a>
+      </div>
+      <div class="wordlist">
+        <ul>
+          {{#WORDLIST}}
+          <li> {{WORD_DE}} </li>
+          {{/WORDLIST}}
+        </ul>
+      </div>
+    </li>
+    {{/LESSONS}}
+  </ol>
+</body>
+</html>

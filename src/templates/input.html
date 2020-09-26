@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {{PAGE_TITLE}} </title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: whitesmoke;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-attachment: fixed; 
+    }
+    .pics {
+      display: flex;
+      justify-content: center;
+    }
+    .pic-frame {
+      padding: 15px;
+      margin: 10px;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(2px);
+      border: 1px solid #777;
+    }
+    img {
+      height: 300px;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 80px;
+      color: white;
+      text-shadow: #555 0 0 3px;
+      font-family: 'Futura';
+    }
+    audio {
+      margin: 3px;
+    }
+    audio:focus {
+      outline: none;
+    }
+    .navbutt {
+       border: 0;
+       padding: 10px;
+       font-size: 1.5rem;
+       text-align: center;
+       color: #373737;
+       font-family: 'Roboto', sans-serif;
+       background-color: #E6E6E6;
+       text-transform: uppercase;
+       text-decoration: none;
+
+    }
+    .navbutt:hover {
+       background-color: #CCCCCC;
+    }
+    .input {
+      display: flex;
+      justify-content: center;
+    }
+    input {
+      color: white;
+      margin: 2em auto;
+      border: none;
+      padding: 0;
+      width: {{INPUT_WIDTH}}ch;
+      background: repeating-linear-gradient(90deg, 
+        white 0, white 1ch, 
+        transparent 0, transparent 1.5ch) 
+        0 100%/ {{GRADIENT_WIDTH}}ch 2px no-repeat;
+        font: 7ch monospace;
+        letter-spacing: 0.5ch;
+    }
+    input:focus {
+		outline: none;
+    }
+    .incorrect {
+      color: #be0a15;
+      background: repeating-linear-gradient(90deg, 
+      #be0a15 0, #be0a15 1ch, 
+        transparent 0, transparent 1.5ch) 
+        0 100%/ {{GRADIENT_WIDTH}}ch 2px no-repeat;
+        font: 7ch monospace;
+        letter-spacing: 0.5ch;  
+    }
+    .correct {
+      color: #187618;
+      background: repeating-linear-gradient(90deg, 
+      #187618 0, #187618 1ch, 
+        transparent 0, transparent 1.5ch) 
+        0 100%/ {{GRADIENT_WIDTH}}ch 2px no-repeat;
+        font: 7ch monospace;
+        letter-spacing: 0.5ch;
+    }
+  </style>
+   <script>
+    window.onload =
+       function () {
+         const animal_input = document.getElementById("animal");
+         animal_input.addEventListener(
+           "keyup",
+             function(event) {
+               animal_input.classList = getInputClassList(animal_input.value);
+             })
+       }
+       function getInputClassList(s) {
+         const expected_str = "{{WORD_DE}}";
+         return s === expected_str ? "correct" : 
+                s.length < expected_str.length ? "" :
+                "incorrect";       
+       }
+ </script>
+</head>
+<body>
+  <a class="navbutt" href="{{LINK_1}}"> ← </a>
+  <main>
+    <div class="pics">
+      <div class="pic-frame"><img src="{{PIC_SRC_1}}" alt="{{WORD_EN}}"></div>
+      <div class="pic-frame"><img src="{{PIC_SRC_2}}" alt="{{WORD_EN}}"></div>
+    </div>
+    <div class="input">
+      <input type="text" id="animal" maxlength="{{WORD_DE_LENGTH}}"> 
+    </div>
+  </main>
+  <a class="navbutt" href="{{LINK_2}}"> → </a>
+</body>
+</html>
